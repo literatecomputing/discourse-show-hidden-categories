@@ -4,9 +4,7 @@ RSpec.describe "Show Hidden Categories", type: :system do
   let(:group) { Fabricate(:group, name: "secret-group") }
   let(:admin) { Fabricate(:admin) }
   let(:regular_user) { Fabricate(:user) }
-  let(:group_member) do
-    Fabricate(:user).tap { |u| group.add(u) }
-  end
+  let(:group_member) { Fabricate(:user).tap { |u| group.add(u) } }
 
   let(:theme) do
     upload_theme_or_component.tap do |t|
@@ -43,9 +41,7 @@ RSpec.describe "Show Hidden Categories", type: :system do
 
     it "links to the group page" do
       visit "/categories"
-      expect(page).to have_css(
-        "[data-category-id='-10000'] a[href='/g/#{group.name}']",
-      )
+      expect(page).to have_css("[data-category-id='-10000'] a[href='/g/#{group.name}']")
     end
   end
 
