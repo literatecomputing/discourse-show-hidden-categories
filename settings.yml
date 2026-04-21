@@ -9,10 +9,6 @@ extra_categories:
         required: true
         identifier: true
 
-      category:
-        type: categories
-        required: true
-
       description:
         type: string
 
