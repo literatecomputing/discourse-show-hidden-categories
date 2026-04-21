@@ -1,0 +1,6 @@
+en:
+  theme_metadata:
+    description: Show a card where hidden categories would be with link to join associated
+      group
+    settings:
+      example_setting: A description of a setting.
