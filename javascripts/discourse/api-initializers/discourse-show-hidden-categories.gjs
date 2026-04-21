@@ -10,22 +10,35 @@ export default apiInitializer((api) => {
       this._super(...arguments);
 
       const extras = settings.extra_categories;
-      if (!extras?.length) return;
+      if (!extras?.length) {
+        return;
+      }
 
       const site = Site.current();
 
       const currentUser = api.getCurrentUser();
 
       extras.forEach((extra, idx) => {
-        if (!extra.title) return;
+        if (!extra.title) {
+          return;
+        }
 
         // Admins and group members can already see the real category
-        if (currentUser?.admin) return;
-        if (!currentUser) return;
+        if (currentUser?.admin) {
+          return;
+        }
+        if (!currentUser) {
+          return;
+        }
         const groupName = Array.isArray(extra.group)
           ? extra.group[0]
           : extra.group;
-        if (groupName && currentUser?.groups?.some((g) => g.name === groupName)) return;
+        if (
+          groupName &&
+          currentUser?.groups?.some((g) => g.name === groupName)
+        ) {
+          return;
+        }
 
         const id = -(10000 + idx);
         const color = (extra.color || "aaaaaa").replace(/^#/, "");
@@ -33,7 +46,9 @@ export default apiInitializer((api) => {
         // Skip if already registered (page revisit)
         if (site.categories.find((c) => c.id === id)) {
           if (!model.categories.find((c) => c.id === id)) {
-            model.categories.pushObject(site.categories.find((c) => c.id === id));
+            model.categories.pushObject(
+              site.categories.find((c) => c.id === id)
+            );
           }
           return;
         }
