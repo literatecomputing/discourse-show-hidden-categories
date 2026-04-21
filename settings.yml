@@ -1,2 +1,31 @@
-example_setting:
-  default: true
+extra_categories:
+  default: []
+  type: objects
+  schema:
+    name: category
+    properties:
+      title:
+        type: string
+        required: true
+        identifier: true
+
+      category:
+        type: categories
+        required: true
+
+      description:
+        type: string
+
+      logo_url:
+        type: string
+
+      icon:
+        type: string
+        default: "lock"
+
+      color:
+        type: string
+        default: "aaaaaa"
+
+      group:
+        type: string

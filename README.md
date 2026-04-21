@@ -1,5 +1,7 @@
 # discourse-show-hidden-categories
 
-**Theme Summary**
+**Show Hidden Categories**
 
-For more information, please see: **url to meta topic**
+Display categories that would otherwise be hidden from a user and offer a way for them to click to join the associated group. 
+
+It's not actually showing the hidden category, but showing a placeholder that looks like a category
