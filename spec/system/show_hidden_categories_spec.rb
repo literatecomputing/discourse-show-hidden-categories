@@ -46,7 +46,7 @@ RSpec.describe "Show Hidden Categories", type: :system do
   end
 
   context "when not logged in" do
-    include_examples "shows the extra category"
+    include_examples "hides the extra category"
   end
 
   context "when logged in as a regular user not in the group" do

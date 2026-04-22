@@ -1,9 +1,22 @@
 import { visit } from "@ember/test-helpers";
 import { test } from "qunit";
-import { acceptance, updateCurrentUser } from "discourse/tests/helpers/acceptance-test";
+import {
+  acceptance,
+  updateCurrentUser,
+} from "discourse/tests/helpers/acceptance-test";
 
 const FAKE_CATEGORY_ID = -10000;
 const TEST_GROUP = "secret-group";
+
+const EXTRA_CATEGORIES = [
+  {
+    title: "My Secret Category",
+    description: "Join the group to see this.",
+    color: "880022",
+    icon: "lock",
+    group: TEST_GROUP,
+  },
+];
 
 acceptance("Show Hidden Categories | visibility", function (needs) {
   needs.pretender((server, helper) => {
@@ -15,6 +28,14 @@ acceptance("Show Hidden Categories | visibility", function (needs) {
         },
       })
     );
+  });
+
+  needs.hooks.beforeEach(function () {
+    settings.extra_categories = EXTRA_CATEGORIES;
+  });
+
+  needs.hooks.afterEach(function () {
+    settings.extra_categories = [];
   });
 
   test("extra category appears for a regular user not in the group", async function (assert) {

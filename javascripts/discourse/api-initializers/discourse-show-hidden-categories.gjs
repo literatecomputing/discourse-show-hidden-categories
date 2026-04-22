@@ -27,9 +27,6 @@ export default apiInitializer((api) => {
         if (currentUser?.admin) {
           return;
         }
-        if (!currentUser) {
-          return;
-        }
         const groupName = Array.isArray(extra.group)
           ? extra.group[0]
           : extra.group;
