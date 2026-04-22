@@ -2,7 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(pnpm lint:js)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(pnpm prettier *)"
     ]
   }
 }
